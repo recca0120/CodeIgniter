@@ -1,6 +1,6 @@
 <?php
 
-class Container
+class CI_Container
 {
     protected $core = [
         'Benchmark',
@@ -43,7 +43,7 @@ class Container
         'Xmlrpc',
         'Xmlrpcs',
         'Zip',
-        ];
+    ];
     
     public function __construct()
     {
@@ -51,7 +51,7 @@ class Container
         $this->registerCodeignerCore($this->container);
         $this->registerCodeignerLibrary($this->container);
         $this->registerCodeigniterDatabase($this->container);
-        Container::setInstance($this->container);
+        \Illuminate\Container\Container::setInstance($this->container);
     }
 
     protected function registerCodeignerCore($container)
@@ -109,6 +109,15 @@ class Container
             }
         });
     }
+        
+    public static function getInstance()
+    {
+        static $instance;
+                
+        return is_null($instance) === true
+            ? $instance = new static()
+            : $instance;
+    }
 }
 
-Container::registerAutoload();
+CI_Container::registerAutoload();
