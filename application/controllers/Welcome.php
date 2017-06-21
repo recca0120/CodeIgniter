@@ -20,9 +20,9 @@ class Welcome extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index(Container $container, $a = null, $b = null)
+	public function index(CI_Benchmark $benchmark, Container $container, $a = null, $b = null)
 	{
-		var_dump($container, $a, $b);
+		var_dump($benchmark, $container, $a, $b);
 
 		$this->load->view('welcome_message');
 	}
