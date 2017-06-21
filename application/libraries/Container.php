@@ -4,16 +4,19 @@ class Container
 {
     protected $core = [
         'Benchmark',
-        'Hooks',
         'Config',
-        'Utf8',
-        'URI',
-        'Router',
-        'Output',
-        'Security',
+        'Exceptions',
+        'Hooks',
         'Input',
         'Lang',
-				'Loader',
+        'Loader',
+        'Log',
+        'Model',
+        'Output',
+        'Router',
+        'Security',
+        'URI',
+        'Utf8',
     ];
     
     public function __construct()
