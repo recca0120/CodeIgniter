@@ -1,5 +1,20 @@
 {
     "require": {
         "illuminate/container": "^5.4"
-    }
+    },
+		"autoload": {
+      	"classmap": [
+          	"controllers",
+						"core",
+						"helpers",
+						"hooks",
+						"language",
+						"libraries",
+						"models",
+						"third_party"
+      	],
+      	"psr-4": {
+          "App\\": "/"
+  			}
+		}
 }
