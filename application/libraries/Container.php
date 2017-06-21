@@ -50,6 +50,7 @@ class Container
         $this->container = new \Illuminate\Container\Container();
         $this->registerCodeignerCore($this->container);
         $this->registerCodeignerLibrary($this->container);
+        $this->registerCodeigniterDatabase($this->container);
         Container::setInstance($this->container);
     }
 
@@ -67,6 +68,16 @@ class Container
             return get_instance();
         });
     }
+
+    protected function registerCodeigniterDatabase($container)
+    {
+        $container->singleton('CI_DB', function ($container) {
+            $ci = get_instance();
+            $ci->load->database();
+                    
+            return $ci->db;
+        });
+    }
         
     protected function registerCodeignerLibrary($container)
     {
@@ -78,7 +89,7 @@ class Container
             $this->container->alias('CI_'.$library, $library);
         }
     }
-
+        
     public function __call($method, $parameters)
     {
         return call_user_func_array([$this->container, $method], $parameters);

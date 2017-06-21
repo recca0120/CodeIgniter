@@ -5,6 +5,11 @@ use Illuminate\Container\Container;
 
 class Welcome extends MY_Controller {
 
+	public function __construct() {
+		parent::__construct();
+		$this->load->database();
+	}
+
 	/**
 	 * Index Page for this controller.
 	 *
@@ -20,8 +25,8 @@ class Welcome extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index(CI_Loader $loader)
+	public function index(CI_Loader $loader, CI_DB $db)
 	{
-		  $loader->view('welcome_message');
+		$loader->view('welcome_message');
 	}
 }
