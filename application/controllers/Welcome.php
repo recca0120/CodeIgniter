@@ -22,6 +22,6 @@ class Welcome extends MY_Controller {
 	 */
 	public function index(CI_Loader $loader)
 	{
-		$loader->view('welcome_message');
+		  $loader->view('welcome_message');
 	}
 }
